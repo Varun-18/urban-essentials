@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
-import { router } from "./routes/index.js";
+import { router } from "@routes";
 
 const app = express();
 
@@ -10,9 +10,9 @@ dotenv.config();
 
 app.use("/", router);
 
-const connectToDatabase = async (port) => {
+const connectToDatabase = async (port: String | Number) => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.MONGO_URI || "");
     console.log("MongoDB connected...");
     console.log(`Server is running on http://localhost:${port}`);
   } catch (err) {

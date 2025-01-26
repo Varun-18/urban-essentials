@@ -2,13 +2,10 @@
   "name": "urbanessentials",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.js",
-  "type": "module",
-  "_moduleAliases": {
-    "@routes": "./src/routes"
-  },
+  "main": "/src/server.ts",
   "scripts": {
-    "start": "nodemon",
+    "dev": "nodemon",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,7 +14,15 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "module-alias": "^2.2.3",
+    "module-alias": "^2.2.2",
     "mongoose": "^8.9.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.10",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.3"
   }
 }
