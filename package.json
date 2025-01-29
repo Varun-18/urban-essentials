@@ -5,24 +5,45 @@
   "main": "/src/server.ts",
   "scripts": {
     "dev": "nodemon",
-    "build": "tsc",
+    "build": "rimraf dist && tsc && tsc-alias",
+    "start:prod": "node -r tsconfig-paths/register -r ts-node/register dist/server.js",
+    "lint": "prettier --write ./src &&  eslint ./src --fix",
+    "start": "TS_NODE_BASEURL=./dist node -r tsconfig-paths/register dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "compression": "^1.7.5",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "module-alias": "^2.2.2",
-    "mongoose": "^8.9.5"
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "mongoose": "^8.9.5",
+    "morgan": "^1.10.0",
+    "rimraf": "^6.0.1",
+    "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@types/compression": "^1.7.5",
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
     "@types/node": "^22.10.10",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "globals": "^15.14.0",
     "nodemon": "^3.1.9",
+    "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.7.3"
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.22.0"
   }
 }
