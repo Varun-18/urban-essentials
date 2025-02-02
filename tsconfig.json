@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
-      "@routes": ["routes/"]
+      "*": ["*"]
     },
     "outDir": "./dist",
     "esModuleInterop": true,

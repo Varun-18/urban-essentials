@@ -4,10 +4,11 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
 import compression from 'compression';
+import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import mongoose from 'mongoose';
 
-import router from '@routes';
+import router from 'routes';
 
 const app = express();
 
@@ -19,6 +20,11 @@ dotenv.config();
  * Security middleware to set various HTTP headers
  */
 app.use(helmet());
+
+/**
+ * Cookie parser middleware
+ */
+app.use(cookieParser());
 
 /**
  * The middleware for handling cross origin resource sharing
