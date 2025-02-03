@@ -7,12 +7,19 @@ import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import mongoose from 'mongoose';
+import path from 'path';
 
 import router from 'routes';
 
 const app = express();
 
 dotenv.config();
+
+/**
+ * view engine
+ */
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 // Middlewares
 
