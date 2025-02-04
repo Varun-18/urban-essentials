@@ -1,5 +1,6 @@
 import { Request, Response, Router } from 'express';
 import { userRouter } from './user';
+import { productRouter } from './products';
 
 const router = Router();
 
@@ -43,7 +44,7 @@ router.get('/', (req: Request, res: Response) => {
 </html>`);
 });
 
-// Use the individual routers
 router.use('/user', userRouter);
+router.use('/products', productRouter);
 
 export default router;
