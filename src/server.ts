@@ -36,7 +36,7 @@ app.use(cookieParser());
 /**
  * The middleware for handling cross origin resource sharing
  */
-app.use(cors({ credentials: true }));
+app.use(cors({ credentials: true , origin: ['http://localhost:3000'] }));
 
 /**
  * compression middleware for compressing the response body
