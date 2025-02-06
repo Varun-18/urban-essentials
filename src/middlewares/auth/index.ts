@@ -1,4 +1,4 @@
-import { STATUS_CODES } from 'constants/httpStatusCodes';
+import { STATUS_CODES } from 'constant/httpCodes';
 import { AuthRequest } from 'declaration';
 import { NextFunction, Response } from 'express';
 import { Secret, verify } from 'jsonwebtoken';

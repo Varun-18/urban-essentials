@@ -5,7 +5,7 @@ import { compareHash } from 'utils';
 
 import { checkExistingUser } from './helpers';
 
-import { STATUS_CODES } from 'constants/httpStatusCodes';
+import { STATUS_CODES } from 'constant';
 
 export const loginUser = async (req: Request, res: Response) => {
   try {

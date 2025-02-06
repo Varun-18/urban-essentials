@@ -1,9 +1,15 @@
 import dotenv from "dotenv"
 import nodemailer, { Transporter } from "nodemailer"
 
+type emailOptions = {
+    to:string,
+    subject:string,
+    html?:string,
+}
+
 dotenv.config();
 
-export const transporter:Transporter = nodemailer.createTransport({
+const transporter:Transporter = nodemailer.createTransport({
     host:"smtp.gmail.com",
     port:465,
     secure:true,
@@ -12,4 +18,7 @@ export const transporter:Transporter = nodemailer.createTransport({
         pass:process.env.GOOGLE_APP_PASS
     }
 })
-        
+
+export const sendEmail = (options: emailOptions) => {
+    transporter.sendMail({...options})
+}

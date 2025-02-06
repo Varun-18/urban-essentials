@@ -17,7 +17,4 @@ export const STATUS_CODES = {
   BAD_GATEWAY: 502,
   SERVICE_UNAVAILABLE: 503,
   GATEWAY_TIMEOUT: 504,
-} as const;
-
-// Type for HTTP status codes
-export type HttpStatusCode = (typeof STATUS_CODES)[keyof typeof STATUS_CODES];
+}

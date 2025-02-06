@@ -1,7 +1,6 @@
-import { Response, Router } from 'express';
-import { loginUser, regsisterUser } from 'controllers';
+import { Router } from 'express';
+import { loginUser, regsisterUser, verifyEmail } from 'controllers';
 import { authenticateUser } from 'middlewares';
-import { AuthRequest } from 'declaration';
 
 const userRouter = Router();
 
@@ -13,9 +12,6 @@ userRouter.post('/login', loginUser);
  */
 userRouter.use(authenticateUser);
 
-userRouter.get('/protected', (req: AuthRequest, res: Response) => {
-  const { email } = req.user;
-  res.send(`welcome user ${email}..!!`);
-});
+userRouter.get('/verify/:token',verifyEmail);
 
 export { userRouter };

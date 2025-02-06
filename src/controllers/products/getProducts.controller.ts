@@ -1,4 +1,4 @@
-import { STATUS_CODES } from 'constants/httpStatusCodes';
+import { STATUS_CODES } from 'constant';
 import { Request, Response } from 'express';
 import { Product } from 'models';
 

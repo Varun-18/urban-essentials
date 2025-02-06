@@ -91,8 +91,7 @@ app.use('/', router);
 const connectToDatabase = async (port: string | number) => {
   try {
     await mongoose.connect(process.env.MONGO_URI || '');
-    console.log('MongoDB connected...');
-    console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running on ${process.env.MODE ==="prod" ? "https://urban-essentials.onrender.com" : `http://localhost:${port}`}`);
   } catch (err) {
     console.error('MongoDB connection error:', err);
   }
