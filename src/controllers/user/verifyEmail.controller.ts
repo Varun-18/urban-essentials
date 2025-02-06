@@ -1,13 +1,11 @@
-import jwt, { Secret } from "jsonwebtoken"
-import { Response } from "express";
+import jwt, { JwtPayload, Secret } from "jsonwebtoken"
+import { Request, Response } from "express";
 
 import { STATUS_CODES } from "constant";
 import { verifyUser } from "./helpers";
-import { AuthRequest } from "declaration";
 
-export const verifyEmail = async(req:AuthRequest,res:Response) => {
+export const verifyEmail = async(req:Request,res:Response) => {
     try {
-        const user = req.user
         const verificationToken = req.params.token
 
         if(!verificationToken){
@@ -15,14 +13,14 @@ export const verifyEmail = async(req:AuthRequest,res:Response) => {
             return ;
         }
 
-        const isVerfied = jwt.verify(verificationToken,process.env.JWT_SECRET as Secret)
+        const isVerfied = jwt.verify(verificationToken,process.env.JWT_SECRET as Secret) as JwtPayload
         
-        if(!isVerfied){
+        if(!isVerfied || !isVerfied.email){
             res.status(STATUS_CODES.UNAUTHORIZED).json({message:"Unauthorized access"})
             return 
         }
 
-        const updatedUser = await verifyUser(user.email)
+        const updatedUser = await verifyUser(isVerfied.email)
 
         res.status(STATUS_CODES.OK).json({message : "user verified",...updatedUser})
     } catch (error) {
