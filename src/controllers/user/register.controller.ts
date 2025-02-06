@@ -33,7 +33,7 @@ const regsisterUser = async (req: Request, res: Response) => {
 
     sendEmail({
       to: newUser.email,
-      subject:"Urban Essentials || Email Verificaion",
+      subject:"Urban Essentials || Email Verification",
       html : verfiyEmailTemplate(frontEndUrl)
     })
 

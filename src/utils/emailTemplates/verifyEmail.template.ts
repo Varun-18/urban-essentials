@@ -55,7 +55,7 @@ export const verfiyEmailTemplate = (frontendUrl:string) : string => {
         <div class="content">
             <h2>Email Verification</h2>
             <p>Thank you for registering with Urban Essentials! To complete your registration, please verify your email address by clicking the button below:</p>
-            <a href="${frontendUrl}" class="button">Verify Email</a>
+            <a style="color:#fff" href="${frontendUrl}" class="button">Verify Email</a>
             <p>If you did not create an account, no further action is required.</p>
         </div>
         <div class="footer">
