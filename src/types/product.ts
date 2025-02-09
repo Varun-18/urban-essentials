@@ -7,6 +7,12 @@ export enum Size {
   OneSize = 'OneSize',
 }
 
+export enum Category {
+  Men = 'Men',
+  Women = 'Women',
+  Kids = 'Kids',
+}
+
 export interface ProductInterface {
   name: string;
   price: number;
@@ -17,4 +23,5 @@ export interface ProductInterface {
   comingSoon: boolean;
   brand: string;
   size: Size[];
+  category: Category;
 }

@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { ProductInterface, Size } from 'types';
+import { Category, ProductInterface, Size } from 'types';
 
 const productSchema: Schema<ProductInterface> = new mongoose.Schema({
   name: { type: String, required: true },
@@ -26,6 +26,11 @@ const productSchema: Schema<ProductInterface> = new mongoose.Schema({
   size: {
     type: [String],
     enum: Object.values(Size),
+    required: true,
+  },
+  category: {
+    type: String,
+    enum: Object.values(Category),
     required: true,
   },
 });
