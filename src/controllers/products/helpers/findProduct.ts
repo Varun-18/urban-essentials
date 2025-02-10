@@ -1,14 +1,14 @@
 import { Product } from 'models';
 
-export const findProduct = async (id: string): Promise<boolean> => {
+export const findProduct = async (id: string) => {
   try {
     const product = await Product.findById(id);
 
-    if (!product || product === null) return false;
+    if (!product || product === null) return null;
 
-    return true;
+    return product;
   } catch (error) {
     console.log('🚀 ~ findProduct ~ error:', error);
-    return false;
+    return null;
   }
 };
