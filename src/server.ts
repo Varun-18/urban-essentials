@@ -36,7 +36,7 @@ app.use(cookieParser());
 /**
  * The middleware for handling cross origin resource sharing
  */
-app.use(cors({ credentials: true , origin: ['http://localhost:3000'] }));
+app.use(cors({ credentials: true, origin: ['http://localhost:3000'] }));
 
 /**
  * compression middleware for compressing the response body
@@ -91,7 +91,9 @@ app.use('/', router);
 const connectToDatabase = async (port: string | number) => {
   try {
     await mongoose.connect(process.env.MONGO_URI || '');
-    console.log(`Server is running on ${process.env.MODE ==="prod" ? "https://urban-essentials.onrender.com" : `http://localhost:${port}`}`);
+    console.log(
+      `Server is running on ${process.env.MODE === 'prod' ? 'https://urban-essentials.onrender.com' : `http://localhost:${port}`}`
+    );
   } catch (err) {
     console.error('MongoDB connection error:', err);
   }

@@ -1,5 +1,5 @@
-export const verfiyEmailTemplate = (frontendUrl:string) : string => {
-    return `<!DOCTYPE html>
+export const verfiyEmailTemplate = (frontendUrl: string): string => {
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -63,5 +63,5 @@ export const verfiyEmailTemplate = (frontendUrl:string) : string => {
         </div>
     </div>
 </body>
-</html>`
-}
+</html>`;
+};

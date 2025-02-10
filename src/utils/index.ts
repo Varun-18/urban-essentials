@@ -1,3 +1,3 @@
 export * from './bcrypt';
-export * from "./nodemailer"
-export * from "./emailTemplates"
+export * from './nodemailer';
+export * from './emailTemplates';

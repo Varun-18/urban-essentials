@@ -5,7 +5,7 @@ import { compareHash } from 'utils';
 
 import { checkExistingUser } from './helpers';
 
-import { STATUS_CODES } from 'constant';
+import { RES_MESSAGES, STATUS_CODES } from 'constant';
 
 export const loginUser = async (req: Request, res: Response) => {
   try {
@@ -15,7 +15,7 @@ export const loginUser = async (req: Request, res: Response) => {
     if (user === null) {
       res
         .status(STATUS_CODES.BAD_REQUEST)
-        .json({ message: 'user does not exists' });
+        .json({ message: RES_MESSAGES.BAD_REQUEST });
       return;
     }
 
@@ -24,7 +24,7 @@ export const loginUser = async (req: Request, res: Response) => {
     if (!isMatch) {
       res
         .status(STATUS_CODES.UNAUTHORIZED)
-        .json({ message: 'email or password does not match' });
+        .json({ message: RES_MESSAGES.UNAUTHORIZED });
       return;
     }
 

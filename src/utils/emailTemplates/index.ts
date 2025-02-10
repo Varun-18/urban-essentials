@@ -1,1 +1,1 @@
-export * from "./verifyEmail.template"
+export * from './verifyEmail.template';

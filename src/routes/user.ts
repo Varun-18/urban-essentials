@@ -1,17 +1,29 @@
 import { Router } from 'express';
 import { loginUser, regsisterUser, verifyEmail } from 'controllers';
-import { authenticateUser } from 'middlewares';
+import { authenticateUser, schemaValidator } from 'middlewares';
+import {
+  loginUserSchema,
+  registerUserSchema,
+  verifyEmailSchema,
+} from 'controllers/user/validators';
 
 const userRouter = Router();
 
-userRouter.post('/register', regsisterUser);
-userRouter.post('/login', loginUser);
-userRouter.get('/verify/:token',verifyEmail);
+userRouter.post(
+  '/register',
+  schemaValidator(registerUserSchema),
+  regsisterUser
+);
+userRouter.post('/login', schemaValidator(loginUserSchema), loginUser);
+userRouter.get(
+  '/verify/:token',
+  schemaValidator(verifyEmailSchema),
+  verifyEmail
+);
 
 /**
  * TODO : make a middleware that updates the refresh token
  */
 userRouter.use(authenticateUser);
-
 
 export { userRouter };

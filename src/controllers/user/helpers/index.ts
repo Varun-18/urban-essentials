@@ -1,2 +1,2 @@
 export * from './checkExistingUser';
-export * from "./verifyUser"
+export * from './verifyUser';
