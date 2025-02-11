@@ -1,5 +1,10 @@
 import { Router } from 'express';
-import { loginUser, regsisterUser, verifyEmail } from 'controllers';
+import {
+  getUserDetails,
+  loginUser,
+  regsisterUser,
+  verifyEmail,
+} from 'controllers';
 import { authenticateUser, schemaValidator } from 'middlewares';
 import {
   loginUserSchema,
@@ -25,5 +30,7 @@ userRouter.get(
  * TODO : make a middleware that updates the refresh token
  */
 userRouter.use(authenticateUser);
+
+userRouter.get('/', getUserDetails);
 
 export { userRouter };

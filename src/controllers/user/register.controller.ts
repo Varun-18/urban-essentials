@@ -12,7 +12,7 @@ const regsisterUser = async (req: Request, res: Response) => {
   try {
     const { name, email, password, role } = req.body;
 
-    const existingUser = await checkExistingUser(email);
+    const existingUser = await checkExistingUser(email, false);
 
     if (existingUser) {
       res.status(400).json({ message: RES_MESSAGES.BAD_REQUEST });

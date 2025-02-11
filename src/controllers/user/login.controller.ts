@@ -10,7 +10,7 @@ import { RES_MESSAGES, STATUS_CODES } from 'constant';
 export const loginUser = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
-    const user = await checkExistingUser(email);
+    const user = await checkExistingUser(email, true);
 
     if (user === null) {
       res

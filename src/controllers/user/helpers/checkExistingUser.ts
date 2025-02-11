@@ -2,10 +2,13 @@ import { User } from 'models';
 import { UserInterface } from 'types';
 
 export const checkExistingUser = async (
-  email: string
+  email: string,
+  password: boolean
 ): Promise<UserInterface | null> => {
   try {
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ email })
+      .select(password ? '+password' : '-password')
+      .lean();
 
     if (existingUser) return existingUser;
 
