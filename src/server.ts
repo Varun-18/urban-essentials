@@ -38,11 +38,12 @@ app.use(cookieParser());
  */
 app.use(
   cors({
+    origin: ['https://made-on-you.vercel.app'],
     credentials: true,
-    origin: ['https://made-on-you.vercel.app/'],
     methods: 'GET, POST, PUT, DELETE, OPTIONS',
     allowedHeaders:
       'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+      
   })
 );
 
