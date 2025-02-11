@@ -38,7 +38,7 @@ app.use(cookieParser());
  */
 app.use(
   cors({
-    origin: ['https://made-on-you.vercel.app', 'http://localhost:3000'],
+    origin: ['http://localhost:3000', 'https://made-on-you.vercel.app'],
     credentials: true,
     methods: 'GET, POST, PUT, DELETE, OPTIONS',
     allowedHeaders:
