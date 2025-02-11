@@ -36,7 +36,15 @@ app.use(cookieParser());
 /**
  * The middleware for handling cross origin resource sharing
  */
-app.use(cors({ credentials: true, origin: '*' }));
+app.use(
+  cors({
+    credentials: true,
+    origin: ['https://made-on-you.vercel.app/'],
+    methods: 'GET, POST, PUT, DELETE, OPTIONS',
+    allowedHeaders:
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+  })
+);
 
 /**
  * compression middleware for compressing the response body
