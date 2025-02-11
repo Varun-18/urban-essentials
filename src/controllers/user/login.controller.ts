@@ -40,7 +40,7 @@ export const loginUser = async (req: Request, res: Response) => {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         maxAge: 3600000,
-        sameSite: 'none',
+        sameSite: 'lax',
       })
       .json({ message: 'login successfully' });
   } catch (error) {
