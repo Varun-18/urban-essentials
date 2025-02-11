@@ -33,16 +33,39 @@ app.use(helmet());
  */
 app.use(cookieParser());
 
+// handling multiple origins for `Access-Control-Allow-Origin`
+const allowedOrigins = [
+  'https://made-on-you.vercel.app',
+  'http://localhost:3000',
+];
+
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (origin && allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, DELETE, OPTIONS'
+  );
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  next();
+});
+
 /**
  * The middleware for handling cross origin resource sharing
  */
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: allowedOrigins,
     credentials: true,
     methods: 'GET, POST, PUT, DELETE, OPTIONS',
     allowedHeaders:
-      'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization,Access-Control-Allow-Origin',
   })
 );
 
