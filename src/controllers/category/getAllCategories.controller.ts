@@ -1,6 +1,8 @@
 import { RES_MESSAGES, STATUS_CODES } from 'constant';
 import { Request, Response } from 'express';
 import { CategoryModel } from 'models';
+import mongoose from 'mongoose';
+import { CategoryType } from 'types';
 
 export const getAllCategories = async (req: Request, res: Response) => {
   try {
@@ -20,7 +22,32 @@ export const getAllCategories = async (req: Request, res: Response) => {
 
     const categories = await CategoryModel.aggregate(pipeline);
 
-    res.status(STATUS_CODES.OK).json({ categories });
+    const addChildren = (
+      id: mongoose.Types.ObjectId | undefined,
+      children: CategoryType[]
+    ): CategoryType[] => {
+      const directChildren = children?.filter(
+        (child) => child?.parent?.toString() === id?.toString()
+      );
+
+      directChildren.forEach((child) => {
+        if (child?.children) {
+          const nestedChildren = addChildren(child._id, children);
+          child.children = nestedChildren;
+        }
+      });
+
+      return directChildren;
+    };
+
+    const formattedCategories = categories.map((category) => {
+      return {
+        ...category,
+        children: addChildren(category._id, category.children),
+      };
+    });
+
+    res.status(STATUS_CODES.OK).json({ categories: formattedCategories });
   } catch (error) {
     console.log('🚀 ~ getAllCategories ~ error:', error);
     res
