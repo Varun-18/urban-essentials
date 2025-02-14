@@ -39,7 +39,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: [
-      'https://made-on-you.onrender.com/',
+      'https://made-on-you.onrender.com',
       'http://localhost:3000',
       'https://made-on-you.vercel.app',
     ],
