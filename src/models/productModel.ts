@@ -28,7 +28,7 @@ const productSchema: Schema<ProductInterface> = new mongoose.Schema({
     enum: Object.values(Size),
     required: true,
   },
-  category: {
+category: {
     type: String,
     enum: Object.values(Category),
     required: true,
