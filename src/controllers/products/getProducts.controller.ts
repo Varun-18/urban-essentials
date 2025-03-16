@@ -8,7 +8,7 @@ function capitalize(str: string) {
 
 export const getProducts = async (req: Request, res: Response) => {
   try {
-    const { category } = req.query;
+    const { category } = req.params;
     let products;
 
     if (category) {

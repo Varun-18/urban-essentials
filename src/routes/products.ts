@@ -11,7 +11,7 @@ import { authenticateUser } from 'middlewares';
 const productRouter = Router();
 
 productRouter.get('/', getProducts);
-productRouter.get('/:category', getProducts);
+productRouter.get('/category/:category', getProducts);
 productRouter.get('/:id', getProductDetail);
 
 productRouter.put('/update', editProducts);
