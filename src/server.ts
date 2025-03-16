@@ -42,6 +42,7 @@ app.use(
       'https://made-on-you.onrender.com',
       'http://localhost:3000',
       'https://made-on-you.vercel.app',
+      'http://localhost:5173',
     ],
     credentials: true,
     methods: 'GET, POST, PUT, DELETE, OPTIONS',
