@@ -2,13 +2,13 @@ import { RES_MESSAGES, STATUS_CODES } from 'constant';
 import { AuthRequest } from 'declaration';
 import { Response } from 'express';
 import { OrderModel } from 'models';
-import { updateProducts } from './helpers';
+import { calculateTotal, updateProducts } from './helpers';
 import { OutOfStockError } from 'customClasses/error';
 
 export const createOrder = async (req: AuthRequest, res: Response) => {
   try {
     const { email } = req.user;
-    const { address, contact, orderItems, orderTotal, pincode } = req.body;
+    const { address, contact, orderItems, pincode } = req.body;
 
     await updateProducts({ orderItems });
 
@@ -17,7 +17,7 @@ export const createOrder = async (req: AuthRequest, res: Response) => {
       address,
       contact,
       orderItems,
-      orderTotal,
+      orderTotal: calculateTotal({ orderItems }),
       pincode,
       status: 'in transit',
     });
